@@ -1,0 +1,45 @@
+version: "3"
+
+services:
+  server:
+    container_name: mernappsvr
+    build: ./expapi
+    #where to find the dockerfile
+    image: mernappserver
+    #what to name the image
+    user: "node"
+    #provides a non root user called node
+    working_dir: /home/node/app
+    #sets node user's home directory
+    environment:
+      - NODE_ENV=development
+      #set this to =production when publishing your app or else performance will be degraded
+      - DEBUG=mernappserver, express:*
+      #Enables logging of express and your app
+    ports:
+      - "5000:5000"
+      #Format: HOST PORT:CONTAINER PORT
+    volumes:
+      - ./server:/home/node/app
+    command: "npm start"
+  client:
+    container_name: mernappclient
+    build: ./react
+    #where to find the dockerfile
+    image: mernappclient
+    #what to name the image
+    user: "node"
+    #provides a non root user called node
+    working_dir: /home/node/app
+    #sets node user's home directory
+    environment:
+      - NODE_ENV=development
+      #set this to =production when publishing your app or else performance will be degraded
+      - DEBUG=mernappclient, express:*
+      #Enables logging of express and your app
+    ports:
+      - "3000:3000"
+      #Format: HOST PORT:CONTAINER PORT
+    volumes:
+      - ./client:/home/node/app
+    command: "npm start"
