@@ -16,7 +16,14 @@ to the DATABASE to retrieve the data, then hands the data back to the REACT CLIE
 ---------------------------
 How to run the application:
 
-You have two ways of running this application base. You can either clone the repo onto an environment running 
-the required dependencies and run the startup.sh script, or you can use with docker.
+You have two ways of running this application base.
+
+You can create the two Dockerfiles into images located in the react and expapi folders. Edit the 'image' and
+'environment DEBUG=' lines in both services to match the image names you chose, then run docker-compose up -d 
+from the root folder to create and run the docker containers.
+
+You can clone the repo onto an environment running the required dependencies (Node, Express, React), 
+edit the package.json in the client folder and change line 27 to this:  "proxy": "http://localhost:5000 and
+run the startup.sh script.
 
 [WIP] Still working on implementing the database into the app.
