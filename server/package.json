@@ -2,15 +2,16 @@
   "name": "mern-v2",
   "version": "1.0.0",
   "description": "Another attempt at creating a workable MERN stack.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "mongoose": "^5.3.11"
   }
 }

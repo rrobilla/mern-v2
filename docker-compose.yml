@@ -3,7 +3,7 @@ version: "3"
 services:
   server:
     container_name: mernappsvr
-    build: ./expapi
+    build: ./images/expapi
     #where to find the dockerfile
     image: mernappserver
     #what to name the image
@@ -19,12 +19,14 @@ services:
     ports:
       - "5000:5000"
       #Format: HOST PORT:CONTAINER PORT
+    links:
+      - db
     volumes:
       - ./server:/home/node/app
     command: "npm start"
   client:
     container_name: mernappclient
-    build: ./react
+    build: ./images/react
     #where to find the dockerfile
     image: mernappclient
     #what to name the image
@@ -43,3 +45,10 @@ services:
     volumes:
       - ./client:/home/node/app
     command: "npm start"
+  db:
+    container_name: mongo
+    image: mongo:4.0.4
+    environment:
+      - MONGO_INITDB_DATABASE=mern-v2
+    volumes:
+      - ./mongo-seed:/docker-entrypoint-initdb.d
