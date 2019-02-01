@@ -1,0 +1,57 @@
+***NOTE***
+Will probably have to run all these commands with sudo
+
+
+apt-get upgrade
+	- Upgrade your ubuntu before installing the DB
+
+apt-get install mariadb-server
+	- this will install the db server
+
+systemctl start mariadb
+	-starts the db server
+
+systemctl enable mariadb
+	- enables the service
+
+mysql_secure_installation
+	- this will take you through the steps of securing your db server (change root pw, etc.)
+
+
+sudo mysql -u root -p
+	- Log into the mariadb server
+
+---------------------------------------------
+MariaDB Commands:
+
+CREATE DATABASE IF NOT EXISTS <db name>;    - Creates a new DB with the name you provide
+
+USE <db name>   - will use the db you name
+
+SHOW TABLES;    - will show you a list of the tables in the DB
+
+---------------------------------------------
+Link to MariaDB walkthrough on creating a simple DB: 
+
+https://mariadb.com/kb/en/library/a-mariadb-primer/
+
+---------------------------------------------
+Example table create:
+
+CREATE TABLE IF NOT EXISTS books (
+  BookID INT NOT NULL PRIMARY KEY AUTO_INCREMENT, 
+  Title VARCHAR(100) NOT NULL, 
+  SeriesID INT,
+  AuthorID INT);
+
+----------------------------------------------
+Example data insert into table:
+
+INSERT INTO books (Title,SeriesID,AuthorID) 
+VALUES('The Fellowship of the Ring',1,1), 
+      ('The Two Towers',1,1), ('The Return of the King',1,1),  
+      ('The Sum of All Men',2,2), ('Brotherhood of the Wolf',2,2), 
+      ('Wizardborn',2,2), ('The Hobbbit',0,1);
+-----------------------------------------------
+
+

@@ -2,10 +2,10 @@ version: "3"
 
 services:
   server:
-    container_name: mernappsvr
+    container_name: appserver
     build: ./images/expapi
     #where to find the dockerfile
-    image: mernappserver
+    image: appserver
     #what to name the image
     user: "node"
     #provides a non root user called node
@@ -14,21 +14,21 @@ services:
     environment:
       - NODE_ENV=development
       #set this to =production when publishing your app or else performance will be degraded
-      - DEBUG=mernappserver, express:*
+      - DEBUG=appserver, express:*
       #Enables logging of express and your app
     ports:
       - "5000:5000"
       #Format: HOST PORT:CONTAINER PORT
-    links:
-      - db
+    #links:
+    #  - db
     volumes:
       - ./server:/home/node/app
     command: "npm start"
   client:
-    container_name: mernappclient
+    container_name: appclient
     build: ./images/react
     #where to find the dockerfile
-    image: mernappclient
+    image: appclient
     #what to name the image
     user: "node"
     #provides a non root user called node
@@ -37,7 +37,7 @@ services:
     environment:
       - NODE_ENV=development
       #set this to =production when publishing your app or else performance will be degraded
-      - DEBUG=mernappclient, express:*
+      - DEBUG=appclient, express:*
       #Enables logging of express and your app
     ports:
       - "3000:3000"
@@ -45,10 +45,3 @@ services:
     volumes:
       - ./client:/home/node/app
     command: "npm start"
-  db:
-    container_name: mongo
-    image: mongo:4.0.4
-    environment:
-      - MONGO_INITDB_DATABASE=mern-v2
-    volumes:
-      - ./mongo-seed:/docker-entrypoint-initdb.d

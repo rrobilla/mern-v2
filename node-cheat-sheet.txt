@@ -1,0 +1,28 @@
+[Node Commands]
+
+npm install <packagename> --save
+-------------------------------------
+this will install a module and save it to the package.json file
+
+
+npm install (from your directory with a package.json file)
+-------------------------------------
+this will install all module dependancies to /node_modules folder in the directory
+it is run from
+
+npm audit fix (fm your directory with a package.json file)
+-------------------------------------
+Will run an audit on all modules and update security issues with them
+
+
+node <filename.js>    ie. node server.js
+-------------------------------------
+will start the node server
+
+
+[How to start the servers]
+- Open a terminal in the client folder and the server folder
+- run the command 'npm start' in both terminals
+
+
+NOTE**** startup.sh only works on windows systems

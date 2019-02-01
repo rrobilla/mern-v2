@@ -6,7 +6,7 @@ This is a boilerplate for a MERN application running inside a docker container.
 --------------------------
 How it works:
 
-There are 3 containers: client(React App), server(Node Express), db(MongoDB)
+There are 3 containers: client(React App), server(Node Express), db(MariaDB)
 
 The user makes connections on http://localhost:3000 and is served the REACT CLIENT. When
 a call is made to the api (eg. localhost:3000/list), the REACT CLIENT routes the request 

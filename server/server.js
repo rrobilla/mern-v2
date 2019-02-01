@@ -1,14 +1,13 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
 
 
-//Executes the dbConn.js file to connect to MongoDB
-require('./db/dbConn');
 
 //Declared Route constants
-const examples = require('./routes/examples');
+const examples = require('./routes/example.js');
+
+const gameClientApi = require('./routes/gameClientApi.js');
 
 const app = express();
 
@@ -17,12 +16,10 @@ app.use(bodyParser.json());
 
 //Routes api endpoints declared in React app to the appropriate Route constant
 app.use('/api/v1/examples', examples);
+app.use('/api/v1/game/playlist', gameClientApi);
 
 // Serve the static files from the React app
 //app.use(express.static(path.join(__dirname, 'client/public')));
-
-
-
 
 
 // An api endpoint that returns a short list of items
